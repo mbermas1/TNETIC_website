@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TNETIC, Inc.</title>
+<title>TNETIC, Inc. — Software that works as hard as you do.</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -12,6 +12,7 @@
     --charcoal-60: #4a5056; --charcoal-40: #7a8088; --charcoal-20: #c2c6cb;
     --charcoal-10: #e8eaec; --charcoal-5: #f4f5f6;
     --emerald: #10b981; --emerald-dark: #059669; --emerald-light: #d1fae5; --emerald-xlight: #f0fdf6;
+    --error: #dc2626; --error-bg: #fef2f2; --error-border: #fecaca;
     --white: #ffffff;
     --font: 'Inter', sans-serif; --font-display: 'DM Sans', sans-serif;
     --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
@@ -22,12 +23,8 @@
   .page { display: none; }
   .page.active { display: block; }
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    height: var(--nav-h); background: rgba(255,255,255,0.96);
-    border-bottom: 1px solid var(--charcoal-10); backdrop-filter: blur(8px);
-    display: flex; align-items: center; justify-content: space-between; padding: 0 40px;
-  }
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--charcoal-10); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
   .nav-logo { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--charcoal); cursor: pointer; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; }
   .nav-logo span { color: var(--emerald); }
   .nav-links { display: flex; align-items: center; gap: 6px; }
@@ -37,6 +34,7 @@
   .nav-cta { background: var(--emerald) !important; color: var(--white) !important; padding: 9px 20px !important; border-radius: var(--radius-sm) !important; font-weight: 600 !important; font-size: 14px !important; transition: background var(--transition) !important; }
   .nav-cta:hover { background: var(--emerald-dark) !important; }
 
+  /* SHARED */
   .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
   .pt-nav { padding-top: var(--nav-h); }
   .section { padding: 80px 0; }
@@ -50,6 +48,7 @@
   .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; font-size: 15px; font-weight: 600; border-radius: var(--radius-sm); text-decoration: none; cursor: pointer; border: none; transition: all var(--transition); font-family: var(--font); }
   .btn-primary { background: var(--emerald); color: var(--white); }
   .btn-primary:hover { background: var(--emerald-dark); transform: translateY(-1px); }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
   .btn-outline { background: transparent; color: var(--charcoal); border: 1.5px solid var(--charcoal-20); }
   .btn-outline:hover { border-color: var(--charcoal-40); background: var(--charcoal-5); }
   .btn-ghost { background: transparent; color: var(--emerald-dark); padding: 10px 0; font-size: 14px; }
@@ -59,6 +58,7 @@
   .tag { display: inline-block; padding: 4px 12px; background: var(--emerald-xlight); color: var(--emerald-dark); border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
   .divider { height: 1px; background: var(--charcoal-10); }
 
+  /* HERO */
   .hero { background: var(--charcoal); padding: 110px 0 90px; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%); border-radius: 50%; }
   .hero::after { content: ''; position: absolute; bottom: -80px; left: 20%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%); border-radius: 50%; }
@@ -73,6 +73,7 @@
   .stat-num { font-family: var(--font-display); font-size: 32px; font-weight: 700; color: var(--white); }
   .stat-label { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 2px; }
 
+  /* PRODUCTS */
   .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
   .product-card { border: 1px solid var(--charcoal-10); border-radius: var(--radius-lg); padding: 32px 28px; transition: border-color var(--transition), transform var(--transition); }
   .product-card:hover { border-color: var(--emerald); transform: translateY(-2px); }
@@ -83,6 +84,7 @@
   .feature-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
   .pill { padding: 4px 12px; background: var(--charcoal-5); color: var(--charcoal-60); border-radius: 20px; font-size: 12px; font-weight: 500; }
 
+  /* CUSTOM DEV */
   .custom-dev { background: var(--charcoal-5); border-radius: var(--radius-lg); padding: 56px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 32px; }
   .dev-tags { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0 28px; }
   .dev-tag { padding: 6px 14px; border: 1px solid var(--charcoal-20); border-radius: 20px; font-size: 13px; font-weight: 500; color: var(--charcoal-60); }
@@ -90,11 +92,13 @@
   .dev-feature-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--charcoal-60); }
   .dev-check { width: 20px; height: 20px; flex-shrink: 0; background: var(--emerald-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
 
+  /* CTA BAND */
   .cta-band { background: var(--charcoal); border-radius: var(--radius-lg); padding: 56px 48px; text-align: center; margin: 0 0 80px; }
   .cta-band h2 { color: var(--white); margin-bottom: 14px; }
   .cta-band p { color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto 32px; }
   .cta-band-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
+  /* ABOUT */
   .about-hero { background: var(--charcoal-5); padding: 80px 0; }
   .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
   .value-card { padding: 28px; border: 1px solid var(--charcoal-10); border-radius: var(--radius-lg); }
@@ -111,6 +115,7 @@
   .why-item h3 { font-size: 16px; margin-bottom: 6px; }
   .why-item p { font-size: 14px; }
 
+  /* SERVICES */
   .services-hero { background: var(--charcoal-5); padding: 80px 0; }
   .services-list { display: flex; flex-direction: column; gap: 1px; background: var(--charcoal-10); border-radius: var(--radius-lg); overflow: hidden; margin-top: 56px; }
   .service-row { display: grid; grid-template-columns: 1fr 2fr auto; gap: 32px; align-items: start; padding: 36px 40px; background: var(--white); transition: background var(--transition); }
@@ -118,6 +123,7 @@
   .service-label { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--charcoal-40); padding-top: 4px; }
   .service-row h3 { margin-bottom: 8px; font-size: 19px; }
 
+  /* CONTACT */
   .contact-hero { background: var(--charcoal); padding: 80px 0; }
   .contact-hero h1 { color: var(--white); }
   .contact-hero .lead { color: rgba(255,255,255,0.6); margin-top: 14px; }
@@ -133,18 +139,42 @@
   .demo-option { display: flex; align-items: center; gap: 10px; padding: 14px 16px; background: var(--white); border: 1px solid var(--charcoal-10); border-radius: var(--radius-md); cursor: pointer; transition: border-color var(--transition); font-size: 14px; font-weight: 500; font-family: var(--font); }
   .demo-option:hover { border-color: var(--emerald); }
   .demo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); flex-shrink: 0; }
-  .form-group { margin-bottom: 20px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  label { display: block; font-size: 13px; font-weight: 600; color: var(--charcoal-60); margin-bottom: 6px; }
-  input, select, textarea { width: 100%; padding: 11px 14px; border: 1px solid var(--charcoal-20); border-radius: var(--radius-sm); font-size: 15px; font-family: var(--font); color: var(--charcoal); background: var(--white); transition: border-color var(--transition), box-shadow var(--transition); outline: none; appearance: none; -webkit-appearance: none; }
-  input:focus, select:focus, textarea:focus { border-color: var(--emerald); box-shadow: 0 0 0 3px rgba(16,185,129,0.12); }
-  textarea { resize: vertical; min-height: 110px; }
-  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a8088' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
-  .form-submit { display: flex; gap: 14px; align-items: center; margin-top: 4px; }
-  .form-note { font-size: 12px; color: var(--charcoal-40); }
-  .success-msg { display: none; padding: 14px 18px; background: var(--emerald-xlight); border: 1px solid var(--emerald-light); border-radius: var(--radius-sm); color: var(--emerald-dark); font-size: 14px; font-weight: 500; margin-top: 12px; }
-  .success-msg.show { display: block; }
 
+  /* FORM */
+  .form-group { margin-bottom: 18px; position: relative; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  label { display: block; font-size: 13px; font-weight: 600; color: var(--charcoal-60); margin-bottom: 6px; }
+  label .req { color: var(--emerald-dark); margin-left: 2px; }
+  input, select, textarea {
+    width: 100%; padding: 11px 14px; border: 1px solid var(--charcoal-20);
+    border-radius: var(--radius-sm); font-size: 15px; font-family: var(--font);
+    color: var(--charcoal); background: var(--white);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none; appearance: none; -webkit-appearance: none;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--emerald); box-shadow: 0 0 0 3px rgba(16,185,129,0.12); }
+  input.error, select.error, textarea.error { border-color: var(--error); }
+  input.error:focus, select.error:focus, textarea.error:focus { box-shadow: 0 0 0 3px rgba(220,38,38,0.1); }
+  .field-error { display: none; font-size: 12px; color: var(--error); margin-top: 5px; }
+  .field-error.show { display: block; }
+  textarea { resize: vertical; min-height: 120px; }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a8088' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+  .form-footer { display: flex; gap: 14px; align-items: center; margin-top: 8px; flex-wrap: wrap; }
+  .form-note { font-size: 12px; color: var(--charcoal-40); }
+  .form-section-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--charcoal-40); margin: 24px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--charcoal-10); }
+
+  /* FORM STATUS MESSAGES */
+  .form-status { display: none; padding: 14px 18px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; margin-top: 16px; }
+  .form-status.success { display: block; background: var(--emerald-xlight); border: 1px solid var(--emerald-light); color: var(--emerald-dark); }
+  .form-status.error { display: block; background: var(--error-bg); border: 1px solid var(--error-border); color: var(--error); }
+
+  /* SPINNER */
+  .spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
+  .spinner.show { display: inline-block; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* FOOTER */
   footer { background: var(--charcoal); padding: 56px 0 32px; }
   .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); }
   .footer-brand .nav-logo { color: var(--white); margin-bottom: 14px; }
@@ -154,20 +184,19 @@
   .footer-col a:hover { color: var(--emerald); }
   .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; font-size: 13px; color: rgba(255,255,255,0.35); }
 
+  /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links a:not(.nav-cta) { display: none; }
     .container { padding: 0 20px; }
     h1 { font-size: 36px; }
-    .products-grid { grid-template-columns: 1fr; }
-    .custom-dev { grid-template-columns: 1fr; padding: 32px 24px; }
-    .values-grid { grid-template-columns: 1fr; }
-    .why-grid { grid-template-columns: 1fr; }
+    .products-grid, .values-grid { grid-template-columns: 1fr; }
+    .custom-dev, .why-grid, .contact-grid { grid-template-columns: 1fr; padding: 32px 24px; }
     .service-row { grid-template-columns: 1fr; gap: 12px; padding: 24px 20px; }
-    .contact-grid { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr 1fr; }
     .hero-stats { gap: 24px; flex-wrap: wrap; }
     .cta-band { padding: 36px 24px; }
+    .form-row, .form-row-3 { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -184,16 +213,16 @@
   </div>
 </nav>
 
+
 <!-- ══════════════════════════════════════════
      HOME
 ══════════════════════════════════════════ -->
 <div class="page active" id="page-home">
-
   <section class="hero pt-nav">
     <div class="container">
-      <div class="eyebrow">Chicago, IL · Software Company</div>
+      <div class="eyebrow">Chicago, IL &middot; Software Company</div>
       <h1>Software that works<br>as hard as <em>you do.</em></h1>
-      <p class="lead">TNETIC builds intelligent SaaS products and custom software for businesses that want to automate smarter, track better, and sell more — without the enterprise price tag.</p>
+      <p class="lead">TNETIC builds intelligent SaaS products and custom software for businesses that want to automate smarter, track better, and sell more &mdash; without the enterprise price tag.</p>
       <div class="hero-btns">
         <button class="btn btn-primary" onclick="showPage('contact')">Book a Demo</button>
         <button class="btn hero-btn-outline" onclick="showPage('services')">Explore Products</button>
@@ -201,7 +230,7 @@
       <div class="hero-stats">
         <div><div class="stat-num">3</div><div class="stat-label">SaaS products</div></div>
         <div><div class="stat-num">24/7</div><div class="stat-label">Uptime commitment</div></div>
-        <div><div class="stat-num">312</div><div class="stat-label">Chicago area code (we're local)</div></div>
+        <div><div class="stat-num">312</div><div class="stat-label">Chicago area code (we&rsquo;re local)</div></div>
       </div>
     </div>
   </section>
@@ -211,67 +240,30 @@
       <div class="eyebrow">Our Products</div>
       <h2>Three products.<br>One focused team.</h2>
       <div class="products-grid">
-
         <div class="product-card">
-          <div class="product-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round">
-              <path d="M12 2a8 8 0 0 1 8 8c0 5.25-8 12-8 12S4 15.25 4 10a8 8 0 0 1 8-8z"/><circle cx="12" cy="10" r="2.5"/>
-            </svg>
-          </div>
+          <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"><path d="M12 2a8 8 0 0 1 8 8c0 5.25-8 12-8 12S4 15.25 4 10a8 8 0 0 1 8-8z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
           <div class="tag" style="margin-bottom:14px">AI Sales Agent</div>
           <h3>AI Benta</h3>
-          <p>An AI-powered sales agent that answers, qualifies, and closes deals across Instagram, Facebook Messenger, WhatsApp, SMS, and web chat — around the clock.</p>
-          <div class="feature-pills">
-            <span class="pill">24/7 AI selling</span><span class="pill">Multi-channel</span><span class="pill">Lead qualification</span>
-          </div>
-          <div style="margin-top:20px">
-            <button class="btn btn-ghost" onclick="window.open('https://aibenta.com','_blank')">
-              Visit aibenta.com
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
-          </div>
+          <p>An AI-powered sales agent that answers, qualifies, and closes deals across Instagram, Facebook Messenger, WhatsApp, SMS, and web chat &mdash; around the clock.</p>
+          <div class="feature-pills"><span class="pill">24/7 AI selling</span><span class="pill">Multi-channel</span><span class="pill">Lead qualification</span></div>
+          <div style="margin-top:20px"><button class="btn btn-ghost" onclick="window.open('https://aibenta.com','_blank')">Visit aibenta.com <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
         </div>
-
         <div class="product-card">
-          <div class="product-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round">
-              <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9 16l2 2 4-4"/>
-            </svg>
-          </div>
+          <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9 16l2 2 4-4"/></svg></div>
           <div class="tag" style="margin-bottom:14px">Cloud &amp; Mobile</div>
           <h3>i-Attend</h3>
-          <p>All-in-one attendance management for organizations that can't afford to guess who showed up. Tracks attendance, collects registrations, runs surveys, issues certificates, and prints name badges — for CPD programs, schools, Greek-letter organizations, houses of worship, conferences, and any event that needs a verifiable record.</p>
-          <div class="feature-pills">
-            <span class="pill">CPD / CEU tracking</span><span class="pill">Online registration</span><span class="pill">Surveys</span><span class="pill">Certificates</span><span class="pill">Name badges</span>
-          </div>
-          <div style="margin-top:20px">
-            <button class="btn btn-ghost" onclick="window.open('https://i-attend.com','_blank')">
-              Visit i-attend.com
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
-          </div>
+          <p>All-in-one attendance management for organizations that can&rsquo;t afford to guess who showed up. Tracks attendance, collects registrations, runs surveys, issues certificates, and prints name badges &mdash; for CPD programs, schools, Greek-letter organizations, houses of worship, and any event needing a verifiable record.</p>
+          <div class="feature-pills"><span class="pill">CPD / CEU tracking</span><span class="pill">Online registration</span><span class="pill">Surveys</span><span class="pill">Certificates</span><span class="pill">Name badges</span></div>
+          <div style="margin-top:20px"><button class="btn btn-ghost" onclick="window.open('https://i-attend.com','_blank')">Visit i-attend.com <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
         </div>
-
         <div class="product-card">
-          <div class="product-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
+          <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <div class="tag" style="margin-bottom:14px">Desktop App</div>
           <h3>Event-Attendance Pro</h3>
           <p>A desktop solution for tracking attendance at seminars, workshops, and training events using RFID or barcode scanners. Affordable, offline-capable, and OSHA-ready.</p>
-          <div class="feature-pills">
-            <span class="pill">RFID / barcode</span><span class="pill">Kiosk mode</span><span class="pill">OSHA compliance</span>
-          </div>
-          <div style="margin-top:20px">
-            <button class="btn btn-ghost" onclick="window.open('https://event-attendance.com','_blank')">
-              Visit event-attendance.com
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
-          </div>
+          <div class="feature-pills"><span class="pill">RFID / barcode</span><span class="pill">Kiosk mode</span><span class="pill">OSHA compliance</span></div>
+          <div style="margin-top:20px"><button class="btn btn-ghost" onclick="window.open('https://event-attendance.com','_blank')">Visit event-attendance.com <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
         </div>
-
       </div>
     </div>
   </section>
@@ -284,10 +276,8 @@
       <h2>Need something built<br>from the ground up?</h2>
       <div class="custom-dev">
         <div>
-          <p class="lead" style="color:var(--charcoal)">We design and develop custom software across three domains — SaaS platforms, e-commerce solutions, and desktop applications.</p>
-          <div class="dev-tags">
-            <span class="dev-tag">SaaS Platforms</span><span class="dev-tag">E-Commerce</span><span class="dev-tag">Desktop Apps</span>
-          </div>
+          <p class="lead" style="color:var(--charcoal)">We design and develop custom software across three domains &mdash; SaaS platforms, e-commerce solutions, and desktop applications.</p>
+          <div class="dev-tags"><span class="dev-tag">SaaS Platforms</span><span class="dev-tag">E-Commerce</span><span class="dev-tag">Desktop Apps</span></div>
           <button class="btn btn-primary" onclick="showPage('contact')">Start a conversation</button>
         </div>
         <ul class="dev-feature-list">
@@ -303,8 +293,8 @@
   <div class="container">
     <div class="cta-band">
       <div class="eyebrow" style="color:var(--emerald)">Ready to move?</div>
-      <h2>Let's build something that works.</h2>
-      <p>Schedule a 30-minute discovery call and see how TNETIC's products can reduce overhead and drive revenue for your business.</p>
+      <h2>Let&rsquo;s build something that works.</h2>
+      <p>Schedule a 30-minute discovery call and see how TNETIC&rsquo;s products can reduce overhead and drive revenue for your business.</p>
       <div class="cta-band-btns">
         <button class="btn btn-primary" onclick="showPage('contact')">Book a free demo</button>
         <button class="btn hero-btn-outline" onclick="showPage('contact')">Send us a message</button>
@@ -330,7 +320,6 @@
      ABOUT
 ══════════════════════════════════════════ -->
 <div class="page" id="page-about">
-
   <section class="about-hero pt-nav">
     <div class="container">
       <div class="eyebrow">About TNETIC</div>
@@ -338,51 +327,46 @@
       <p class="lead">Founded in Chicago, TNETIC, Inc. is a software company focused on one thing: creating tools that reduce friction, eliminate manual work, and help businesses operate with confidence.</p>
     </div>
   </section>
-
   <section class="about-mission">
     <div class="container">
       <div class="eyebrow">Our mission</div>
-      <h2>Make powerful software <em>accessible</em> to every business — not just the enterprise.</h2>
+      <h2>Make powerful software <em>accessible</em> to every business &mdash; not just the enterprise.</h2>
       <p>We believe that small and mid-sized businesses deserve the same quality of software as Fortune 500 companies. Every product we build is designed to be genuinely useful, approachable without an IT department, and built to scale with you.</p>
     </div>
   </section>
-
   <section class="section">
     <div class="container">
       <div class="eyebrow">What we stand for</div>
       <h2>Values we build by</h2>
       <div class="values-grid">
         <div class="value-card"><div class="value-num">01</div><h3>Usefulness over features</h3><p>We ship tools that solve real problems, not feature lists that look good in demos but create complexity in practice.</p></div>
-        <div class="value-card"><div class="value-num">02</div><h3>Accessible complexity</h3><p>Powerful under the hood, simple at the surface. Our products don't require dedicated IT staff to deploy or operate.</p></div>
-        <div class="value-card"><div class="value-num">03</div><h3>Honest partnership</h3><p>We tell you what your project actually needs — not what fills an invoice. Long-term relationships matter more than one-time wins.</p></div>
-        <div class="value-card"><div class="value-num">04</div><h3>Designed to scale</h3><p>Every product we build is architected to grow. You shouldn't need to rebuild when your business doubles.</p></div>
+        <div class="value-card"><div class="value-num">02</div><h3>Accessible complexity</h3><p>Powerful under the hood, simple at the surface. Our products don&rsquo;t require dedicated IT staff to deploy or operate.</p></div>
+        <div class="value-card"><div class="value-num">03</div><h3>Honest partnership</h3><p>We tell you what your project actually needs &mdash; not what fills an invoice. Long-term relationships matter more than one-time wins.</p></div>
+        <div class="value-card"><div class="value-num">04</div><h3>Designed to scale</h3><p>Every product we build is architected to grow. You shouldn&rsquo;t need to rebuild when your business doubles.</p></div>
         <div class="value-card"><div class="value-num">05</div><h3>Responsive support</h3><p>When something breaks or a question comes up, you reach a person. Not a chatbot. Not a ticket queue measured in days.</p></div>
-        <div class="value-card"><div class="value-num">06</div><h3>Chicago-grounded</h3><p>We're a Chicago company. We work in Central Time, we value directness, and we show up when it matters.</p></div>
+        <div class="value-card"><div class="value-num">06</div><h3>Chicago-grounded</h3><p>We&rsquo;re a Chicago company. We work in Central Time, we value directness, and we show up when it matters.</p></div>
       </div>
     </div>
   </section>
-
   <section class="section" style="background:var(--charcoal-5);padding:80px 0">
     <div class="container">
       <div class="eyebrow">Why teams choose us</div>
       <h2>What makes working with TNETIC different</h2>
       <div class="why-grid">
-        <div class="why-item"><div class="why-num">&rarr;</div><div><h3>Products with a track record</h3><p>Our SaaS tools aren't proofs of concept — they're deployed in hospitals, professional associations, and enterprises across the US.</p></div></div>
+        <div class="why-item"><div class="why-num">&rarr;</div><div><h3>Products with a track record</h3><p>Our SaaS tools aren&rsquo;t proofs of concept &mdash; they&rsquo;re deployed in hospitals, professional associations, and enterprises across the US.</p></div></div>
         <div class="why-item"><div class="why-num">&rarr;</div><div><h3>One team, full stack</h3><p>Design, development, and deployment under one roof. No handoffs between agencies. No gaps in accountability.</p></div></div>
         <div class="why-item"><div class="why-num">&rarr;</div><div><h3>B2B focus, B2C polish</h3><p>We build for business workflows but design for the people using them. The result is software your team actually adopts.</p></div></div>
-        <div class="why-item"><div class="why-num">&rarr;</div><div><h3>Priced for growth-stage companies</h3><p>Enterprise-quality without enterprise-grade sticker shock. We're built to work with teams at the inflection point, not after the Series C.</p></div></div>
+        <div class="why-item"><div class="why-num">&rarr;</div><div><h3>Priced for growth-stage companies</h3><p>Enterprise-quality without enterprise-grade sticker shock. We&rsquo;re built to work with teams at the inflection point, not after the Series C.</p></div></div>
       </div>
     </div>
   </section>
-
   <section class="section-sm">
     <div class="container" style="text-align:center">
       <h2 style="margin-bottom:14px">Want to work with us?</h2>
-      <p style="max-width:480px;margin:0 auto 28px">Start with a 30-minute call. No pitch deck, no pressure — just an honest conversation about what you're building.</p>
+      <p style="max-width:480px;margin:0 auto 28px">Start with a 30-minute call. No pitch deck, no pressure &mdash; just an honest conversation about what you&rsquo;re building.</p>
       <button class="btn btn-primary" onclick="showPage('contact')">Book a free discovery call</button>
     </div>
   </section>
-
   <footer>
     <div class="container">
       <div class="footer-top">
@@ -401,7 +385,6 @@
      SERVICES
 ══════════════════════════════════════════ -->
 <div class="page" id="page-services">
-
   <section class="services-hero pt-nav">
     <div class="container">
       <div class="eyebrow">Products &amp; Services</div>
@@ -409,13 +392,11 @@
       <p class="lead" style="max-width:520px;margin-top:14px">Three ready-to-deploy SaaS products and custom software development across the solutions your business actually needs.</p>
     </div>
   </section>
-
   <section class="section">
     <div class="container">
       <div class="eyebrow">SaaS Products</div>
       <h2>Ready to deploy today</h2>
       <div class="services-list">
-
         <div class="service-row">
           <div><div class="service-label">AI Sales Agent</div></div>
           <div>
@@ -425,14 +406,13 @@
           </div>
           <div><button class="btn btn-outline" style="font-size:13px;padding:9px 16px" onclick="window.open('https://aibenta.com','_blank')">Learn more</button></div>
         </div>
-
         <div class="service-row">
           <div><div class="service-label">Cloud + Mobile</div></div>
           <div>
             <h3>i-Attend</h3>
-            <p>i-Attend replaces sign-in sheets, manual rosters, and disconnected spreadsheets with a single, cloud-based platform that handles every step of the attendance lifecycle — from registration through certificate delivery.</p>
+            <p>i-Attend replaces sign-in sheets, manual rosters, and disconnected spreadsheets with a single, cloud-based platform that handles every step of the attendance lifecycle &mdash; from registration through certificate delivery.</p>
             <p style="margin-top:10px">Built for organizations where attendance carries real weight: continuing professional development programs that must document CEUs, schools and districts tracking student participation, Greek-letter organizations managing chapter meeting records, houses of worship logging service attendance, and conference organizers who need auditable, compliance-ready data.</p>
-            <p style="margin-top:10px;font-weight:500;color:var(--charcoal)">If your event requires a verifiable record of who was there — i-Attend was built for it.</p>
+            <p style="margin-top:10px;font-weight:500;color:var(--charcoal)">If your event requires a verifiable record of who was there &mdash; i-Attend was built for it.</p>
             <div class="feature-pills" style="margin-top:14px">
               <span class="pill">CPD / CEU tracking</span><span class="pill">Online registration</span><span class="pill">Attendee self check-in</span><span class="pill">RFID &amp; QR scanning</span><span class="pill">Surveys &amp; evaluations</span><span class="pill">Certificates</span><span class="pill">Name badges</span><span class="pill">20+ reports</span><span class="pill">iOS &amp; Android apps</span>
             </div>
@@ -442,7 +422,6 @@
           </div>
           <div><button class="btn btn-outline" style="font-size:13px;padding:9px 16px" onclick="window.open('https://i-attend.com','_blank')">Learn more</button></div>
         </div>
-
         <div class="service-row">
           <div><div class="service-label">Desktop App</div></div>
           <div>
@@ -452,38 +431,22 @@
           </div>
           <div><button class="btn btn-outline" style="font-size:13px;padding:9px 16px" onclick="window.open('https://event-attendance.com','_blank')">Learn more</button></div>
         </div>
-
       </div>
     </div>
   </section>
-
   <div class="divider"></div>
-
   <section class="section">
     <div class="container">
       <div class="eyebrow">Custom Development</div>
       <h2>Built for your specific problem</h2>
-      <p style="max-width:560px;margin:14px 0 40px;font-size:17px">When off-the-shelf doesn't fit, we design and develop from scratch. Our custom work spans three core domains.</p>
+      <p style="max-width:560px;margin:14px 0 40px;font-size:17px">When off-the-shelf doesn&rsquo;t fit, we design and develop from scratch. Our custom work spans three core domains.</p>
       <div class="services-list">
-        <div class="service-row">
-          <div><div class="service-label">SaaS</div></div>
-          <div><h3>SaaS Platform Development</h3><p>Multi-tenant cloud applications built with scalable architecture. From MVP to production, we handle product design, back-end, front-end, authentication, billing integration, and deployment.</p></div>
-          <div><button class="btn btn-primary" style="font-size:13px;padding:9px 16px;white-space:nowrap" onclick="showPage('contact')">Get a quote</button></div>
-        </div>
-        <div class="service-row">
-          <div><div class="service-label">E-Commerce</div></div>
-          <div><h3>E-Commerce Solutions</h3><p>Custom storefronts, marketplaces, and B2B purchasing portals. Payment gateway integrations, inventory management, custom checkout flows, and order management systems.</p></div>
-          <div><button class="btn btn-primary" style="font-size:13px;padding:9px 16px;white-space:nowrap" onclick="showPage('contact')">Get a quote</button></div>
-        </div>
-        <div class="service-row">
-          <div><div class="service-label">Desktop</div></div>
-          <div><h3>Desktop Application Development</h3><p>Windows and cross-platform desktop applications for businesses with offline requirements, hardware integrations (scanners, printers, RFID), or compliance needs that cloud-only can't meet.</p></div>
-          <div><button class="btn btn-primary" style="font-size:13px;padding:9px 16px;white-space:nowrap" onclick="showPage('contact')">Get a quote</button></div>
-        </div>
+        <div class="service-row"><div><div class="service-label">SaaS</div></div><div><h3>SaaS Platform Development</h3><p>Multi-tenant cloud applications built with scalable architecture. From MVP to production, we handle product design, back-end, front-end, authentication, billing integration, and deployment.</p></div><div><button class="btn btn-primary" style="font-size:13px;padding:9px 16px;white-space:nowrap" onclick="showPage('contact')">Get a quote</button></div></div>
+        <div class="service-row"><div><div class="service-label">E-Commerce</div></div><div><h3>E-Commerce Solutions</h3><p>Custom storefronts, marketplaces, and B2B purchasing portals. Payment gateway integrations, inventory management, custom checkout flows, and order management systems.</p></div><div><button class="btn btn-primary" style="font-size:13px;padding:9px 16px;white-space:nowrap" onclick="showPage('contact')">Get a quote</button></div></div>
+        <div class="service-row"><div><div class="service-label">Desktop</div></div><div><h3>Desktop Application Development</h3><p>Windows and cross-platform desktop applications for businesses with offline requirements, hardware integrations (scanners, printers, RFID), or compliance needs that cloud-only can&rsquo;t meet.</p></div><div><button class="btn btn-primary" style="font-size:13px;padding:9px 16px;white-space:nowrap" onclick="showPage('contact')">Get a quote</button></div></div>
       </div>
     </div>
   </section>
-
   <footer>
     <div class="container">
       <div class="footer-top">
@@ -502,12 +465,11 @@
      CONTACT
 ══════════════════════════════════════════ -->
 <div class="page" id="page-contact">
-
   <section class="contact-hero pt-nav">
     <div class="container">
       <div class="eyebrow">Get in touch</div>
-      <h1>Let's talk about<br>what you're building.</h1>
-      <p class="lead">Book a free 30-minute demo, or send us a message and we'll get back to you within one business day.</p>
+      <h1>Let&rsquo;s talk about<br>what you&rsquo;re building.</h1>
+      <p class="lead">Book a free 30-minute demo, or send us a message and we&rsquo;ll get back to you within one business day.</p>
     </div>
   </section>
 
@@ -515,18 +477,20 @@
     <div class="container">
       <div class="contact-grid">
 
+        <!-- Left: Info + Demo picker -->
         <div>
           <h3 style="margin-bottom:24px">Book a product demo</h3>
           <div class="demo-box">
             <h3>Which product interests you?</h3>
-            <p>Select what you'd like to see and we'll schedule a focused, hands-on walkthrough.</p>
+            <p>Select what you&rsquo;d like to see and we&rsquo;ll schedule a focused, hands-on walkthrough.</p>
             <div class="demo-options">
-              <div class="demo-option"><div class="demo-dot"></div>AI Benta — AI sales agent</div>
-              <div class="demo-option"><div class="demo-dot"></div>i-Attend — Attendance &amp; event management</div>
-              <div class="demo-option"><div class="demo-dot"></div>Event-Attendance Pro — Desktop app</div>
+              <div class="demo-option"><div class="demo-dot"></div>AI Benta &mdash; AI sales agent</div>
+              <div class="demo-option"><div class="demo-dot"></div>i-Attend &mdash; Attendance &amp; event management</div>
+              <div class="demo-option"><div class="demo-dot"></div>Event-Attendance Pro &mdash; Desktop app</div>
               <div class="demo-option"><div class="demo-dot"></div>Custom development project</div>
             </div>
-            <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="alert('Connect this button to your Calendly or booking page URL.')">Schedule a 30-min call &rarr;</button>
+            <!-- Replace the href below with your Calendly or booking URL -->
+            <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="window.open('https://calendly.com/tnetic','_blank')">Schedule a 30-min call &rarr;</button>
           </div>
           <div style="margin-top:36px">
             <div class="contact-info-item">
@@ -544,33 +508,76 @@
           </div>
         </div>
 
+        <!-- Right: Contact form -->
         <div>
           <h3 style="margin-bottom:24px">Send us a message</h3>
+
+          <div class="form-section-label">Your information</div>
+
           <div class="form-row">
-            <div class="form-group"><label for="fname">First name</label><input type="text" id="fname" placeholder="Jane"></div>
-            <div class="form-group"><label for="lname">Last name</label><input type="text" id="lname" placeholder="Smith"></div>
+            <div class="form-group">
+              <label for="first_name">First name <span class="req">*</span></label>
+              <input type="text" id="first_name" name="first_name" placeholder="Jane" autocomplete="given-name">
+              <div class="field-error" id="err-first_name">First name is required.</div>
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last name <span class="req">*</span></label>
+              <input type="text" id="last_name" name="last_name" placeholder="Smith" autocomplete="family-name">
+              <div class="field-error" id="err-last_name">Last name is required.</div>
+            </div>
           </div>
-          <div class="form-group"><label for="email">Work email</label><input type="email" id="email" placeholder="jane@yourcompany.com"></div>
-          <div class="form-group"><label for="company">Company</label><input type="text" id="company" placeholder="Acme Corp"></div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Work email <span class="req">*</span></label>
+              <input type="email" id="email" name="email" placeholder="jane@yourcompany.com" autocomplete="email">
+              <div class="field-error" id="err-email">A valid email address is required.</div>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone number <span class="req">*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="(312) 555-0100" autocomplete="tel">
+              <div class="field-error" id="err-phone">Phone number is required.</div>
+            </div>
+          </div>
+
           <div class="form-group">
-            <label for="interest">I'm interested in</label>
-            <select id="interest">
+            <label for="company">Company / Organization <span class="req">*</span></label>
+            <input type="text" id="company" name="company" placeholder="Acme Corp" autocomplete="organization">
+            <div class="field-error" id="err-company">Company name is required.</div>
+          </div>
+
+          <div class="form-section-label">About your inquiry</div>
+
+          <div class="form-group">
+            <label for="interest">I&rsquo;m interested in <span class="req">*</span></label>
+            <select id="interest" name="interest">
               <option value="">Select a product or service&hellip;</option>
-              <option>AI Benta</option>
-              <option>i-Attend</option>
-              <option>Event-Attendance Pro</option>
-              <option>Custom SaaS development</option>
-              <option>Custom e-commerce solution</option>
-              <option>Custom desktop application</option>
-              <option>Not sure yet — just exploring</option>
+              <option value="AI Benta">AI Benta &mdash; AI sales agent</option>
+              <option value="i-Attend">i-Attend &mdash; Attendance &amp; event management</option>
+              <option value="Event-Attendance Pro">Event-Attendance Pro &mdash; Desktop app</option>
+              <option value="Custom SaaS development">Custom SaaS development</option>
+              <option value="Custom e-commerce solution">Custom e-commerce solution</option>
+              <option value="Custom desktop application">Custom desktop application</option>
+              <option value="General inquiry">General inquiry / not sure yet</option>
             </select>
+            <div class="field-error" id="err-interest">Please select an area of interest.</div>
           </div>
-          <div class="form-group"><label for="message">Tell us about your project</label><textarea id="message" placeholder="What are you trying to solve? The more context you share, the better we can prepare."></textarea></div>
-          <div class="form-submit">
-            <button class="btn btn-primary" onclick="submitForm()">Send message</button>
-            <span class="form-note">We respond within 1 business day.</span>
+
+          <div class="form-group">
+            <label for="message">Tell us about your project <span class="req">*</span></label>
+            <textarea id="message" name="message" placeholder="What are you trying to solve? The more context you share, the better we can prepare."></textarea>
+            <div class="field-error" id="err-message">Please include a message.</div>
           </div>
-          <div class="success-msg" id="success-msg">&#10003; Message sent — we'll be in touch within one business day.</div>
+
+          <div class="form-footer">
+            <button class="btn btn-primary" id="submit-btn" onclick="submitContactForm()">
+              <span id="btn-label">Send message</span>
+              <div class="spinner" id="btn-spinner"></div>
+            </button>
+            <span class="form-note">We respond within 1 business day. <span class="req">*</span> Required fields.</span>
+          </div>
+
+          <div class="form-status" id="form-status"></div>
         </div>
 
       </div>
@@ -592,28 +599,129 @@
 
 
 <script>
+  /* ── Page navigation ─────────────────────────────────────── */
   function showPage(id) {
     document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
     document.querySelectorAll('.nav-links a').forEach(function(a) { a.classList.remove('active'); });
     var page = document.getElementById('page-' + id);
-    var nav = document.getElementById('nav-' + id);
+    var nav  = document.getElementById('nav-' + id);
     if (page) page.classList.add('active');
-    if (nav) nav.classList.add('active');
+    if (nav)  nav.classList.add('active');
     window.scrollTo(0, 0);
   }
 
-  function submitForm() {
-    var msg = document.getElementById('success-msg');
-    msg.classList.add('show');
-    setTimeout(function() { msg.classList.remove('show'); }, 5000);
-  }
-
+  /* ── Demo option picker ──────────────────────────────────── */
   document.querySelectorAll('.demo-option').forEach(function(opt) {
     opt.addEventListener('click', function() {
       document.querySelectorAll('.demo-option').forEach(function(o) { o.style.borderColor = ''; });
       this.style.borderColor = '#10b981';
     });
   });
+
+  /* ── Form validation helpers ─────────────────────────────── */
+  function setFieldError(id, show) {
+    var input = document.getElementById(id);
+    var err   = document.getElementById('err-' + id);
+    if (!input || !err) return;
+    if (show) {
+      input.classList.add('error');
+      err.classList.add('show');
+    } else {
+      input.classList.remove('error');
+      err.classList.remove('show');
+    }
+  }
+
+  function clearAllErrors() {
+    ['first_name','last_name','email','phone','company','interest','message'].forEach(function(id) {
+      setFieldError(id, false);
+    });
+  }
+
+  /* Clear field error on input */
+  ['first_name','last_name','email','phone','company','interest','message'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', function() { setFieldError(id, false); });
+  });
+
+  function isValidEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  /* ── Contact form submit ─────────────────────────────────── */
+  function submitContactForm() {
+    clearAllErrors();
+    var statusEl  = document.getElementById('form-status');
+    statusEl.className = 'form-status';
+    statusEl.textContent = '';
+
+    var fields = {
+      first_name: document.getElementById('first_name').value.trim(),
+      last_name:  document.getElementById('last_name').value.trim(),
+      email:      document.getElementById('email').value.trim(),
+      phone:      document.getElementById('phone').value.trim(),
+      company:    document.getElementById('company').value.trim(),
+      interest:   document.getElementById('interest').value,
+      message:    document.getElementById('message').value.trim()
+    };
+
+    var valid = true;
+    if (!fields.first_name)             { setFieldError('first_name', true); valid = false; }
+    if (!fields.last_name)              { setFieldError('last_name',  true); valid = false; }
+    if (!isValidEmail(fields.email))    { setFieldError('email',      true); valid = false; }
+    if (!fields.phone)                  { setFieldError('phone',      true); valid = false; }
+    if (!fields.company)                { setFieldError('company',    true); valid = false; }
+    if (!fields.interest)               { setFieldError('interest',   true); valid = false; }
+    if (!fields.message)                { setFieldError('message',    true); valid = false; }
+
+    if (!valid) return;
+
+    /* UI: loading state */
+    var btn     = document.getElementById('submit-btn');
+    var label   = document.getElementById('btn-label');
+    var spinner = document.getElementById('btn-spinner');
+    btn.disabled     = true;
+    label.textContent = 'Sending\u2026';
+    spinner.classList.add('show');
+
+    /* Build form data */
+    var body = new FormData();
+    Object.keys(fields).forEach(function(k) { body.append(k, fields[k]); });
+
+    /*
+     * POST to contact.php — both files must live in the same directory on your server.
+     * If you place contact.php elsewhere, update the URL below.
+     */
+    fetch('contact.php', { method: 'POST', body: body })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        btn.disabled      = false;
+        label.textContent = 'Send message';
+        spinner.classList.remove('show');
+
+        if (data.success) {
+          statusEl.className   = 'form-status success';
+          statusEl.textContent = data.message || "Thanks \u2014 we\u2019ll be in touch within one business day.";
+          /* Reset form */
+          ['first_name','last_name','email','phone','company','message'].forEach(function(id) {
+            document.getElementById(id).value = '';
+          });
+          document.getElementById('interest').value = '';
+        } else {
+          statusEl.className   = 'form-status error';
+          statusEl.textContent = data.message || 'Something went wrong. Please email us directly at hello@tnetic.com.';
+        }
+        statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      })
+      .catch(function() {
+        btn.disabled      = false;
+        label.textContent = 'Send message';
+        spinner.classList.remove('show');
+        statusEl.className   = 'form-status error';
+        statusEl.textContent = 'Could not reach the server. Please email us directly at hello@tnetic.com.';
+        statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+  }
 </script>
 
 </body>
